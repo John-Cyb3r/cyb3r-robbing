@@ -44,11 +44,11 @@ local function GetClosestPlayer()
     return closestPlayer, closestDistance
 end
 
-RegisterNetEvent('cyber-robitem:openmenu', function()
+RegisterNetEvent('Cyb3r-robitem:openmenu', function()
 	local ClosestPlayer, distance = GetClosestPlayer()
 	--print(GetPlayerServerId(ClosestPlayer), distance)
 	if ClosestPlayer and distance < 2 then
-		QBCore.Functions.TriggerCallback('cyber-robitem:isplayerdead', function(bool)
+		QBCore.Functions.TriggerCallback('Cyb3r-robitem:isplayerdead', function(bool)
 			if bool and bool ~= "brokenitem" then
 				exports["rpemotes"]:EmoteCommandStart('medic')
 				QBCore.Functions.Notify('You started searching the players body', 'success', 5000)
@@ -61,7 +61,7 @@ RegisterNetEvent('cyber-robitem:openmenu', function()
 				}, {}, {}, {}, function()
 					exports["rpemotes"]:EmoteCancel()
 
-					TriggerEvent('cyber-robitem:mainMenu', {tPlayerId = GetPlayerServerId(ClosestPlayer)})
+					TriggerEvent('Cyb3r-robitem:mainMenu', {tPlayerId = GetPlayerServerId(ClosestPlayer)})
 
 				end, function()
 					exports["rpemotes"]:EmoteCancel()
@@ -78,10 +78,10 @@ RegisterNetEvent('cyber-robitem:openmenu', function()
 	end
 end)
 
--- RegisterNetEvent('cyber-robitem:opensubmenu-items', function(data)
+-- RegisterNetEvent('Cyb3r-robitem:opensubmenu-items', function(data)
 
 -- 	--print(data.targetPlayerId)
--- 	QBCore.Functions.TriggerCallback('cyber-robitem:GetPlayerInventory', function(playerItems)
+-- 	QBCore.Functions.TriggerCallback('Cyb3r-robitem:GetPlayerInventory', function(playerItems)
 -- 		if playerItems then
 
 --         	local menu = {
@@ -89,7 +89,7 @@ end)
 --         	        header = "Go Back",
 --         	        icon = 'fas fa-backward',
 --         	        params = {
---         	            event = 'cyber-robitem:mainMenu',
+--         	            event = 'Cyb3r-robitem:mainMenu',
 --         	            args = {tPlayerId = data.targetPlayerId}
 --         	        }
 --         	    }
@@ -104,7 +104,7 @@ end)
 --         	            icon = item.name,  -- Use a generic icon or map item name to specific icons
 --         	            params = {
 -- 							isServer = true,
---         	                event = 'cyber-robitem:RobItem',
+--         	                event = 'Cyb3r-robitem:RobItem',
 --         	                args = { 
 -- 								stealingPlayerId = GetPlayerServerId(PlayerId()),
 -- 								robbedPlayerId = data.targetPlayerId,
@@ -127,20 +127,20 @@ end)
 
 -- end)
 
-RegisterNetEvent('cyber-robitem:opensubmenu-items', function(data)
+RegisterNetEvent('Cyb3r-robitem:opensubmenu-items', function(data)
 	local menu = {
 		{
 			header = "Go Back",
 			icon = 'fas fa-backward',
 			params = {
-				event = 'cyber-robitem:mainMenu',
+				event = 'Cyb3r-robitem:mainMenu',
 				args = { tPlayerId = data.targetPlayerId }
 			}
 		}
 	}
 	local playerid = GetPlayerServerId(PlayerId())
 	
-    QBCore.Functions.TriggerCallback('cyber-robitem:GetPlayerInventory', function(playerItems)
+    QBCore.Functions.TriggerCallback('Cyb3r-robitem:GetPlayerInventory', function(playerItems)
 		local time
 		while not playerItems do
 			time = time + 1
@@ -159,7 +159,7 @@ RegisterNetEvent('cyber-robitem:opensubmenu-items', function(data)
         	            icon = item.name,  -- Use a generic icon or map item name to specific icons
         	            params = {
         	                isServer = true,
-        	                event = 'cyber-robitem:RobItem',
+        	                event = 'Cyb3r-robitem:RobItem',
         	                args = {
         	                    stealingPlayerId = playerid,
         	                    robbedPlayerId = data.targetPlayerId,
@@ -180,19 +180,19 @@ end)
 
 
 
-RegisterNetEvent('cyber-robitem:opensubmenu-cash', function(data)
+RegisterNetEvent('Cyb3r-robitem:opensubmenu-cash', function(data)
 	--print(data.targetPlayerId)
 	local menu = {
 		{
 			header = "Go Back",
 			icon = 'fas fa-backward',
 			params = {
-				event = 'cyber-robitem:mainMenu',
+				event = 'Cyb3r-robitem:mainMenu',
 				args = {tPlayerId = data.targetPlayerId	}
 			}
 		},
 	}
-	QBCore.Functions.TriggerCallback('cyber-robitem:GetPlayerCash', function(cashAmount)
+	QBCore.Functions.TriggerCallback('Cyb3r-robitem:GetPlayerCash', function(cashAmount)
 		if cashAmount then
 			local bool = false
 			if cashAmount <= 0 then bool = true end
@@ -203,7 +203,7 @@ RegisterNetEvent('cyber-robitem:opensubmenu-cash', function(data)
 				icon = 'fas fa-money-bill-wave',
     		    params = {
 					isServer = true,
-    		        event = "cyber-robitem:RobCash",
+    		        event = "Cyb3r-robitem:RobCash",
     		        args = {
     		            sourcePlayerId = GetPlayerServerId(PlayerId()),
 						targetPlayerId = data.targetPlayerId,
@@ -218,7 +218,7 @@ RegisterNetEvent('cyber-robitem:opensubmenu-cash', function(data)
 	end, data.targetPlayerId)
 end)
 
-RegisterNetEvent('cyber-robitem:mainMenu', function(data)
+RegisterNetEvent('Cyb3r-robitem:mainMenu', function(data)
 	local menu = {
 		{
 			header = 'Robbing Options',
@@ -233,7 +233,7 @@ RegisterNetEvent('cyber-robitem:mainMenu', function(data)
 			txt = 'Search For Items In The Body!',
 			icon = 'fas fa-magnifying-glass',
 			params = {
-				event = 'cyber-robitem:opensubmenu-items',
+				event = 'Cyb3r-robitem:opensubmenu-items',
 				args = {
 					targetPlayerId = data.tPlayerId
 				}
@@ -249,7 +249,7 @@ RegisterNetEvent('cyber-robitem:mainMenu', function(data)
 			-- hidden = true, -- optional, hides the button completely
 			params = {
 				-- isServer = false, -- optional, specify event type
-				event = 'cyber-robitem:opensubmenu-cash',
+				event = 'Cyb3r-robitem:opensubmenu-cash',
 				args = {
 					targetPlayerId = data.tPlayerId
 				}
@@ -261,6 +261,6 @@ end)
 
 -- RegisterCommand('qbmenutest', function(source)
 -- 	print("cmd: "..source)
--- 	TriggerEvent('cyber-robitem:mainMenu', 1)
+-- 	TriggerEvent('Cyb3r-robitem:mainMenu', 1)
 -- end)
 

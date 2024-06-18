@@ -1,4 +1,4 @@
-# Cyber-Robbing
+# Cyb3r-Robbing
 A custom script for roleplay servers that allows the specification of which items or cash which could be robbed from the player.
 
 ## Screenshot Previews - I am using a modified version of qb-menu which doesn't show Item Images/Icons but With the Original one, you will be able to see them
@@ -20,15 +20,15 @@ A custom script for roleplay servers that allows the specification of which item
 - add the following code to your server.cfg file
 
 ```
-ensure cyber-robbing
+ensure Cyb3r-robbing
 ```
 ### Installation
 
 - Add the following line of code to your `logs.lua` in file inside qb-smallresources under the `Webhooks` adn replace it with your discord webhook url
 
 ```lua
--- Cyber-Robbing
-['cyber-robbing'] = 'YOUR_DISCORD_WEBHOOK_URL',
+-- Cyb3r-Robbing
+['Cyb3r-robbing'] = 'YOUR_DISCORD_WEBHOOK_URL',
 
 ```
 
@@ -36,7 +36,7 @@ ensure cyber-robbing
 - add the follwing line into your `items.lua`
 
 ```lua
--- Cyber-Robbing Items
+-- Cyb3r-Robbing Items
 robbingkit = { name = 'robbingkit', label = 'Robbery Kit', weight = 1000, type = 'item', image = 'robbingkit.png', unique = true, useable = true, shouldClose = true, description = 'A Robbery Kit that can be used to search people' },
 ```
 

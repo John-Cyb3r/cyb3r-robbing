@@ -9,10 +9,10 @@ QBCore.Functions.CreateUseableItem(Config.RobbingKit, function(source, item)
         return 
     end
 
-    TriggerClientEvent("cyber-robitem:openmenu", src)
+    TriggerClientEvent("Cyb3r-robitem:openmenu", src)
 end)
 
-QBCore.Functions.CreateCallback('cyber-robitem:isplayerdead', function(source, cb, PlayerId)
+QBCore.Functions.CreateCallback('Cyb3r-robitem:isplayerdead', function(source, cb, PlayerId)
     local Player = QBCore.Functions.GetPlayer(tonumber(PlayerId)) 
     local StealingPlayer = QBCore.Functions.GetPlayer(source)
     if Player and StealingPlayer then
@@ -28,7 +28,7 @@ QBCore.Functions.CreateCallback('cyber-robitem:isplayerdead', function(source, c
                 if Config.QBlogging then
                     local StealingPlayerName =  StealingPlayer.PlayerData.charinfo.firstname .. " " .. StealingPlayer.PlayerData.charinfo.lastname
                     local RobbedPlayerName =  Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname
-                    TriggerEvent('qb-log:server:CreateLog', 'cyber-robbing', '**ID:** ``'..source..'`` **|** ``'..StealingPlayerName..' ('..GetPlayerName(source)..')`` **Is Robbing The Player ID:** ``'..PlayerId..'`` **|** ``'..RobbedPlayerName..' ('..GetPlayerName(PlayerId)..')``', 'yellow')
+                    TriggerEvent('qb-log:server:CreateLog', 'Cyb3r-robbing', '**ID:** ``'..source..'`` **|** ``'..StealingPlayerName..' ('..GetPlayerName(source)..')`` **Is Robbing The Player ID:** ``'..PlayerId..'`` **|** ``'..RobbedPlayerName..' ('..GetPlayerName(PlayerId)..')``', 'yellow')
                 end
             else
                 bool = "brokenitem"
@@ -42,7 +42,7 @@ QBCore.Functions.CreateCallback('cyber-robitem:isplayerdead', function(source, c
     end
 end)
 
-QBCore.Functions.CreateCallback('cyber-robitem:GetPlayerInventory', function(source, cb, stealingPlayerId)
+QBCore.Functions.CreateCallback('Cyb3r-robitem:GetPlayerInventory', function(source, cb, stealingPlayerId)
 
     local stealingPlayer = QBCore.Functions.GetPlayer(tonumber(stealingPlayerId))
     if stealingPlayer then
@@ -54,7 +54,7 @@ QBCore.Functions.CreateCallback('cyber-robitem:GetPlayerInventory', function(sou
     
 end)
 
-QBCore.Functions.CreateCallback('cyber-robitem:GetPlayerCash', function(source, cb, targetPlayerId)
+QBCore.Functions.CreateCallback('Cyb3r-robitem:GetPlayerCash', function(source, cb, targetPlayerId)
     --local sourcePlayer = QBCore.Functions.GetPlayer(source)
     local targetPlayer = QBCore.Functions.GetPlayer(targetPlayerId)
     if targetPlayer then
@@ -65,7 +65,7 @@ QBCore.Functions.CreateCallback('cyber-robitem:GetPlayerCash', function(source, 
     end
 end)
 
-RegisterServerEvent('cyber-robitem:RobItem', function(data)
+RegisterServerEvent('Cyb3r-robitem:RobItem', function(data)
     local robbedPlayerId, stealingPlayerId, itemName, itemAmount = data.robbedPlayerId, data.stealingPlayerId, data.itemName, data.itemAmount
     local robbedPlayer = QBCore.Functions.GetPlayer(robbedPlayerId)
     local stealingPlayer = QBCore.Functions.GetPlayer(stealingPlayerId)
@@ -89,11 +89,11 @@ RegisterServerEvent('cyber-robitem:RobItem', function(data)
                     exports['ps-inventory']:SaveInventory(stealingPlayerId, false)
 
                     -- Trigger the client event to update the menu for the stealing player
-                    TriggerClientEvent('cyber-robitem:opensubmenu-items', stealingPlayerId, { targetPlayerId = robbedPlayerId })
+                    TriggerClientEvent('Cyb3r-robitem:opensubmenu-items', stealingPlayerId, { targetPlayerId = robbedPlayerId })
                     if Config.QBlogging then 
                         local StealingPlayerName =  stealingPlayer.PlayerData.charinfo.firstname .. " " .. stealingPlayer.PlayerData.charinfo.lastname
                         local RobbedPlayerName =  robbedPlayer.PlayerData.charinfo.firstname .. " " .. robbedPlayer.PlayerData.charinfo.lastname
-                        TriggerEvent('qb-log:server:CreateLog', 'cyber-robbing', '**ID:** ``'..stealingPlayerId..'`` **|** ``'..StealingPlayerName..' ('..GetPlayerName(stealingPlayerId)..')`` **Robbed An Item From The Player ID:** ``'..robbedPlayerId..'`` **|** ``'..RobbedPlayerName..' ('..GetPlayerName(robbedPlayerId)..')``', 'red', '```json\n' .. json.encode(robbedItem, { indent = true })..'```')
+                        TriggerEvent('qb-log:server:CreateLog', 'Cyb3r-robbing', '**ID:** ``'..stealingPlayerId..'`` **|** ``'..StealingPlayerName..' ('..GetPlayerName(stealingPlayerId)..')`` **Robbed An Item From The Player ID:** ``'..robbedPlayerId..'`` **|** ``'..RobbedPlayerName..' ('..GetPlayerName(robbedPlayerId)..')``', 'red', '```json\n' .. json.encode(robbedItem, { indent = true })..'```')
                     end
                 else
                     -- If adding the item to the target player failed, give it back to the source player
@@ -117,7 +117,7 @@ RegisterServerEvent('cyber-robitem:RobItem', function(data)
     end
 end)
 
-RegisterServerEvent('cyber-robitem:RobCash', function(data)
+RegisterServerEvent('Cyb3r-robitem:RobCash', function(data)
     local sourcePlayerId, targetPlayerId, amount = tonumber(data.sourcePlayerId), tonumber(data.targetPlayerId), tonumber(data.amount)
     --print(sourcePlayerId, targetPlayerId, amount)
     local sourcePlayer = QBCore.Functions.GetPlayer(sourcePlayerId)
@@ -134,12 +134,12 @@ RegisterServerEvent('cyber-robitem:RobCash', function(data)
                 sourcePlayer.Functions.AddMoney('cash', amount)
                 TriggerClientEvent('QBCore:Notify', sourcePlayerId, 'You have robbed $' .. amount .. ' from Player ID: ' .. targetPlayerId, 'success')
                 TriggerClientEvent('QBCore:Notify', targetPlayerId, 'You have been robbed of $' .. amount .. ' by Player ID: ' .. sourcePlayerId, 'error')
-                TriggerClientEvent('cyber-robitem:opensubmenu-cash' ,sourcePlayerId, {targetPlayerId = targetPlayerId})
+                TriggerClientEvent('Cyb3r-robitem:opensubmenu-cash' ,sourcePlayerId, {targetPlayerId = targetPlayerId})
 
                 if Config.QBlogging then
                     local StealingPlayerName =  sourcePlayer.PlayerData.charinfo.firstname .. " " .. sourcePlayer.PlayerData.charinfo.lastname
                     local RobbedPlayerName =  targetPlayer.PlayerData.charinfo.firstname .. " " .. targetPlayer.PlayerData.charinfo.lastname
-                    TriggerEvent('qb-log:server:CreateLog', 'cyber-robbing', '**ID:** ``'..sourcePlayerId..'`` **|** ``'..StealingPlayerName..' ('..GetPlayerName(sourcePlayerId)..')`` **Robbed Cash From The Player ID:** ``'..targetPlayerId..'`` **|** ``'..RobbedPlayerName..' ('..GetPlayerName(targetPlayerId)..')``', 'red', '**Cash Amount:** ``'..amount..'``')
+                    TriggerEvent('qb-log:server:CreateLog', 'Cyb3r-robbing', '**ID:** ``'..sourcePlayerId..'`` **|** ``'..StealingPlayerName..' ('..GetPlayerName(sourcePlayerId)..')`` **Robbed Cash From The Player ID:** ``'..targetPlayerId..'`` **|** ``'..RobbedPlayerName..' ('..GetPlayerName(targetPlayerId)..')``', 'red', '**Cash Amount:** ``'..amount..'``')
                 end
             else
                 TriggerClientEvent('QBCore:Notify', sourcePlayerId, 'Failed to rob cash', 'error')

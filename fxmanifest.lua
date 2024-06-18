@@ -1,5 +1,5 @@
-name "Cyber-Robbing"
-author "Cyber"
+name "Cyb3r-Robbing"
+author "Cyb3r"
 version "v1.0.0"
 description "Specific Item/Cash Robbing Script For QBCore Framework"
 
