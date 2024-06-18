@@ -16,9 +16,8 @@ A custom script for roleplay servers that allows the specification of which item
 
 # How to install
 
-If you want to use your own items or repurpose this script:
-- Place in your resources folder
-- add the following code to your server.cfg
+- Place the folder in your resources folder
+- add the following code to your server.cfg file
 
 ```
 ensure cyber-robbing
@@ -42,7 +41,7 @@ robbingkit = { name = 'robbingkit', label = 'Robbery Kit', weight = 1000, type =
 ```
 
 # Features:
-### Robbing
+### Robbing Config
 - Configurable Items: Easily edit the items that can be robbed in the config.lua file.
 - Enable/Disable Options: Toggle item robbery and cash robbery on or off in the config.lua file.
 - Customizable Item Names: Change the name of the usable item in the config.lua file.
