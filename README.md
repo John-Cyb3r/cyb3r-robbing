@@ -53,3 +53,9 @@ robbingkit = { name = 'robbingkit', label = 'Robbery Kit', weight = 1000, type =
 ### Logging
 - Detailed Logging: Logs the player's character name, server ID, and FiveM name during a robbery.
 - Comprehensive Item Details: Provides advanced details of the items being robbed, including weapon serial numbers, item amounts, and more.
+
+# Credits
+
+**A Huge thank you to the following persons for their incredible contributions:**
+- Thank you to [Kaiser-Fahim](https://github.com/KaiserFahim) for helping me find and fix bugs
+- Thank you to [G H 0 S T](https://github.com/NoT-Gh0sT) for helping me find and fix bugs
