@@ -56,6 +56,6 @@ robbingkit = { name = 'robbingkit', label = 'Robbery Kit', weight = 1000, type =
 
 # Credits
 
-**A Huge thank you to the following persons for their incredible contributions:**
+**A Huge thank you to the following people for their incredible contributions:**
 - Thank you to [Kaiser-Fahim](https://github.com/KaiserFahim) for helping me find and fix bugs
 - Thank you to [G H 0 S T](https://github.com/NoT-Gh0sT) for helping me find and fix bugs
