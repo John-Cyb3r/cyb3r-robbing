@@ -11,14 +11,25 @@ local function GetPlayerIdFromPed(targetPed)
 end
 
 local function isStealable(item)
-	if item then
-    	for _, stealableItem in ipairs(Config.StealableItems) do
-    	    if item == stealableItem then
-    	        return true
-    	    end
-    	end
+	if not Config.DoNotStealCertainItems then
+		if item then
+    		for _, stealableItem in ipairs(Config.StealableItems) do
+    		    if item == stealableItem then
+    		        return true
+    		    end
+    		end
+		end
+    	return false
+	else
+		if item then
+    		for _, stealableItem in ipairs(Config.DoNotSteal) do
+    		    if item == stealableItem then
+    		        return false
+    		    end
+    		end
+		end
+    	return true
 	end
-    return false
 end
 
 local function GetClosestPlayer()
@@ -77,55 +88,6 @@ RegisterNetEvent('Cyb3r-robitem:openmenu', function()
 		QBCore.Functions.Notify('You are not close enough to the player', 'error')
 	end
 end)
-
--- RegisterNetEvent('Cyb3r-robitem:opensubmenu-items', function(data)
-
--- 	--print(data.targetPlayerId)
--- 	QBCore.Functions.TriggerCallback('Cyb3r-robitem:GetPlayerInventory', function(playerItems)
--- 		if playerItems then
-
---         	local menu = {
---         	    {
---         	        header = "Go Back",
---         	        icon = 'fas fa-backward',
---         	        params = {
---         	            event = 'Cyb3r-robitem:mainMenu',
---         	            args = {tPlayerId = data.targetPlayerId}
---         	        }
---         	    }
---         	}
-		
---         	-- Loop through the player's items and add them to the menu
---         	for _, item in ipairs(playerItems) do
---         	    if isStealable(item.name) then
---         	        table.insert(menu, {
---         	            header = item.label,
---         	            txt = "Item Amount: " .. item.amount,
---         	            icon = item.name,  -- Use a generic icon or map item name to specific icons
---         	            params = {
--- 							isServer = true,
---         	                event = 'Cyb3r-robitem:RobItem',
---         	                args = { 
--- 								stealingPlayerId = GetPlayerServerId(PlayerId()),
--- 								robbedPlayerId = data.targetPlayerId,
---         	                    itemName = item.name,
---         	                    itemAmount = item.amount
---         	                }
---         	            }
---         	        })
---         	    end
---         	end
-
---         	exports['qb-menu']:openMenu(menu)
--- 		else
-
--- 			exports['qb-menu']:openMenu(menu)
-
--- 			QBCore.Functions.Notify('Player not found or Inventory is empty', 'error')
--- 		end
--- 	end, data.targetPlayerId)
-
--- end)
 
 RegisterNetEvent('Cyb3r-robitem:opensubmenu-items', function(data)
 	local menu = {
