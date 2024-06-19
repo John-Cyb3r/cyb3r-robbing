@@ -10,6 +10,7 @@ A custom script for roleplay servers that allows the specification of which item
 ![image](https://cdn.discordapp.com/attachments/1213222011170717706/1252424329568849982/image.png?ex=66722a8d&is=6670d90d&hm=8a023528bcdc3963264252ff34c89ab5b28914db3d2b3897106400f5600b1e5c&)
 
 ## Dependencies
+- rpemotes - For The Emotes that will play while searching the player
 - qb-menu - For The Context Menus
 - qb-smallresources - For Logging robbed items and the cash (Optional - Only required for the logs)
 - progressbar - For the progressbar while searching the person
