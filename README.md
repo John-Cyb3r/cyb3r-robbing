@@ -16,7 +16,7 @@ A custom script for roleplay servers that allows the specification of which item
 ## Dependencies
 - rpemotes - For The Emotes that will play while searching the player
 - qb-menu (Optional) - For The Robbing Menu
-- ox_lib - For Robbing menu / if you don't want to use qb-menu
+- ox_lib - For Robbing menu, if you don't want to use qb-menu
 - progressbar - For the progressbar while searching the person
 
 # How to install
