@@ -42,8 +42,8 @@ robbingkit = { name = 'robbingkit', label = 'Robbery Kit', weight = 1000, type =
 - Added support for ox_lib context menu, incase you don't want to use qb menu
 - Added Cash Rob Max Amount for players
 - Added Cash Rob Cooldown, will disable option to rob cash after Max Amount is robbed (Configurable)
-- Changed from qb-logs to inbuilt loggin system, just configure your webhookurl
-- Added Max Stealable Items Limit, to limit players from robbing certian items 
+- Changed from qb-logs to inbuilt log system, just configure your webhookurl
+- Added Max Stealable Items Limit, to limit players from robbing certain items 
 - Added Cooldown For Max Stealable Items Limit, will disable option to rob that specific item after Max Amount is robbed (Configurable)
 - Some Additional Bug Fixes
 
