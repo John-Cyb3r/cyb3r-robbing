@@ -1,7 +1,7 @@
 # Cyb3r-Robbing
 A custom script for roleplay servers that allows the specification of which items or cash which could be robbed from the player.
 
-## Screenshot Previews - I am using a modified version of qb-menu which doesn't show Item Images/Icons but With the Original one, you will be able to see them
+### Screenshot Previews - In a few screenshots I am using a modified version of qb-menu which doesn't show Item Images/Icons but With the Original one, you will be able to see them
 ![image](https://media.discordapp.net/attachments/1213222011170717706/1252421091125891163/Screenshot_430.png?ex=66722788&is=6670d608&hm=9b137ce95220e5717428bbcb63d1313824da4bf0aeff14e658e81b404845aba8&=&format=webp&quality=lossless&width=1193&height=671)
 ![image](https://media.discordapp.net/attachments/1213222011170717706/1252421092065284177/Screenshot_431.png?ex=66722789&is=6670d609&hm=76439cda76b50a64e43ccc58f3c6a899a2518462fc0d2de98c239ebce477f144&=&format=webp&quality=lossless&width=1193&height=671)
 ![image](https://cdn.discordapp.com/attachments/1213222011170717706/1252421092744892497/Screenshot_432.png?ex=66722789&is=6670d609&hm=fc81f8a2cb808f77b92c2aa583a725d6f907b30d9020bdf8e408174b8f0fabc8&)
