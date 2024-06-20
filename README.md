@@ -38,12 +38,6 @@ robbingkit = { name = 'robbingkit', label = 'Robbery Kit', weight = 1000, type =
 ```
 
 # Features:
-### Robbing Config
-- Configurable Items: Easily edit the items that can be robbed in the config.lua file.
-- Enable/Disable Options: Toggle item robbery and cash robbery on or off in the config.lua file.
-- Customizable Item Names: Change the name of the usable item in the config.lua file.
-- Adjustable Progress Bar: Modify the progress bar duration to fit your needs.
-
 ### Update v1.1.0
 - Added support for ox_lib context menu, incase you don't want to use qb menu
 - Added Cash Rob Max Amount for players
@@ -52,6 +46,12 @@ robbingkit = { name = 'robbingkit', label = 'Robbery Kit', weight = 1000, type =
 - Added Max Stealable Items Limit, to limit players from robbing certian items 
 - Added Cooldown For Max Stealable Items Limit, will disable option to rob that specific item after Max Amount is robbed (Configurable)
 - Some Additional Bug Fixes
+
+### Robbing Config
+- Configurable Items: Easily edit the items that can be robbed in the config.lua file.
+- Enable/Disable Options: Toggle item robbery and cash robbery on or off in the config.lua file.
+- Customizable Item Names: Change the name of the usable item in the config.lua file.
+- Adjustable Progress Bar: Modify the progress bar duration to fit your needs.
 
 ### Inbuilt Limited Item Use System
 - Usage Limits: Set the number of times an item can be used before it is broken.
