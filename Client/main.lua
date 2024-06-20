@@ -90,8 +90,8 @@ RegisterNetEvent('Cyb3r-robitem:openmenu', function()
 	local ClosestPlayer, distance = PlayerId(), 1 --GetClosestPlayer()
 	--print(GetPlayerServerId(ClosestPlayer), distance)
 	if ClosestPlayer and distance < 2 then
-		--QBCore.Functions.TriggerCallback('Cyb3r-robitem:isplayerdead', function(bool)
-			--if bool and bool ~= "brokenitem" then
+		QBCore.Functions.TriggerCallback('Cyb3r-robitem:isplayerdead', function(bool)
+			if bool and bool ~= "brokenitem" then
 				exports["rpemotes"]:EmoteCommandStart('medic')
 				QBCore.Functions.Notify('You started searching the players body', 'success', 5000)
 				QBCore.Functions.Notify(ClosestPlayer, 'You are being searched by another player', 'error', 5000)
@@ -109,12 +109,12 @@ RegisterNetEvent('Cyb3r-robitem:openmenu', function()
 					exports["rpemotes"]:EmoteCancel()
 					QBCore.Functions.Notify('You stopped searching the Player', 'error')
 				end)
-			--elseif bool == "brokenitem" then
-			--	QBCore.Functions.Notify('The RobbingKit is broken, Please get a new one' , 'error', 3000)
-			--else
-			--	QBCore.Functions.Notify('Player is not fully dead yet', 'error')
-			--end
-		--end, GetPlayerServerId(ClosestPlayer))
+			elseif bool == "brokenitem" then
+				QBCore.Functions.Notify('The RobbingKit is broken, Please get a new one' , 'error', 3000)
+			else
+				QBCore.Functions.Notify('Player is not fully dead yet', 'error')
+			end
+		end, GetPlayerServerId(ClosestPlayer))
 	else
 		QBCore.Functions.Notify('You are not close enough to the player', 'error')
 	end
