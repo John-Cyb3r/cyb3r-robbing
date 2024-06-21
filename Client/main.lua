@@ -87,7 +87,7 @@ end
 
 RegisterNetEvent('Cyb3r-robitem:openmenu', function()
 
-	local ClosestPlayer, distance = PlayerId(), 1 --GetClosestPlayer()
+	local ClosestPlayer, distance = GetClosestPlayer()
 	--print(GetPlayerServerId(ClosestPlayer), distance)
 	if ClosestPlayer and distance < 2 then
 		QBCore.Functions.TriggerCallback('Cyb3r-robitem:isplayerdead', function(bool)
