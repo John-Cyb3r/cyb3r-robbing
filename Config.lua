@@ -7,6 +7,7 @@ Config.CashRobMaxAmount = 10000 -- Maximum Amount Of Cash A Player Can rob and w
 Config.CashRobCooldown = 10 -- In minutes, the cooldown which the robbing player must wait to rob cash again after they have already robbed him out the max amount
 
 Config.EnableOxLibMenu = false
+Config.InventoryImages = "qb-inventory/html/images"
 
 Config.RobbingKit = "robbingkit"
 Config.SearchProgressTime = 1000 -- 10second

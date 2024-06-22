@@ -144,10 +144,6 @@ RegisterNetEvent('Cyb3r-robitem:opensubmenu-items', function(data)
     	QBCore.Functions.TriggerCallback('Cyb3r-robitem:GetPlayerInventory', function(playerItems)
     	    if playerItems then
     	    	for _, item in pairs(playerItems) do
-					local itemicon = "fa-lightbulb"
-					if item.type == "weapon" then
-						itemicon = "fa-gun"
-					end
 					local RobAmount = item.amount
 					if Config.StealableItemsMaxAmount[item.name] then
 						if item.amount > Config.StealableItemsMaxAmount[item.name]  then 
@@ -158,7 +154,7 @@ RegisterNetEvent('Cyb3r-robitem:opensubmenu-items', function(data)
 						table.insert(menu.options, {
 							title = item.label.." [Amount: " .. RobAmount.."]" ,
 							description = "[SLOT: "..item.slot.."]",
-							icon = itemicon,
+							icon = ("nui://%s/%s"):format(Config.InventoryImages, QBCore.Shared.Items[tostring(item.name)].image),
 							disabled = hasBeenRobbedItemRecently(data.targetPlayerId, item.name, item.slot),
 							event = 'Cyb3r-robitem:clientrobitem',
 							args = {
