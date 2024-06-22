@@ -1,6 +1,6 @@
 name "Cyb3r-Robbing"
 author "Cyb3r"
-version "v1.1.0"
+version "v1.1.1"
 description "Specific Item/Cash Robbing Script For QBCore Framework"
 
 game 'gta5'
