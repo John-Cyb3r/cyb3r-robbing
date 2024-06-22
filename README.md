@@ -8,8 +8,7 @@ A custom script for roleplay servers that allows the specification of which item
 ![image](https://cdn.discordapp.com/attachments/1213222011170717706/1252421095139709010/Screenshot_433.png?ex=66722789&is=6670d609&hm=57123299f03180b7b4a2075c79252862534e72fe1acc708fd99e3374e4ffc285&)
 ![image](https://cdn.discordapp.com/attachments/1213222011170717706/1253423768706093078/Screenshot_443.png?ex=6675cd59&is=66747bd9&hm=f95804f59dddc39a3c68f245b03897e0c34581527047756505add136b9606b86&)
 ![image](https://cdn.discordapp.com/attachments/1213222011170717706/1253423770329288835/Screenshot_445.png?ex=6675cd5a&is=66747bda&hm=0bdf51d95dbfbcf65a981c53a05dd00ab22e8ed0ccf829129a7579a0c3e9599e&)
-![image](https://cdn.discordapp.com/attachments/1213222011170717706/1253423769423188081/Screenshot_444.png?ex=6675cd5a&is=66747bda&hm=a0534f5567132d8444c39fdda8005ed6cc21dacd9ccd7378cfe2c3179d69c073&)
-![image](https://cdn.discordapp.com/attachments/1213222011170717706/1253423770954109041/Screenshot_446.png?ex=6675cd5a&is=66747bda&hm=b580147ce224c811ced09aee834b0e97f2d3edb561883a0189232fea5b6c894c&)
+![image](https://cdn.discordapp.com/attachments/1213222011170717706/1254019216252604536/image.png?ex=6677f7e7&is=6676a667&hm=752cbe27657a7200c1af72b8cd281ba27a27439f382ada98890f484c33869585&)
 ![image](https://cdn.discordapp.com/attachments/1213222011170717706/1252424125792649276/image.png?ex=66722a5c&is=6670d8dc&hm=fe2a341afffd4582cadf3685727717769d5c0de389d1a4625724944c13ce1fec&)
 ![image](https://cdn.discordapp.com/attachments/1213222011170717706/1252424329568849982/image.png?ex=66722a8d&is=6670d90d&hm=8a023528bcdc3963264252ff34c89ab5b28914db3d2b3897106400f5600b1e5c&)
 
