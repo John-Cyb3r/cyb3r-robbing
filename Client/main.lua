@@ -29,8 +29,6 @@ local function hasBeenRobbedItemRecently(playerId, itemname, slot)
     local MinutesInMillis = Config.StealableItemsMaxAmountCooldown * 60 * 1000
     local currentTime = GetGameTimer()
     if PlayerRobbedItemRecent[playerId] and PlayerRobbedItemRecent[playerId][itemname] and PlayerRobbedItemRecent[playerId][itemname][slot] then
-		print(GetGameTimer())
-		print(currentTime - PlayerRobbedItemRecent[playerId][itemname][slot].lastRobbedTime)
         if (currentTime - PlayerRobbedItemRecent[playerId][itemname][slot].lastRobbedTime) < MinutesInMillis then
 
             return true

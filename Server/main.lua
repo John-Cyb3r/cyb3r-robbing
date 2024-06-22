@@ -100,8 +100,6 @@ RegisterServerEvent('Cyb3r-robitem:RobItem', function(data)
     if Config.StealableItemsMaxAmount[itemName] then
 
         if itemAmount >= Config.StealableItemsMaxAmount[itemName] then 
-
-            print(currentTime)
             if not PlayerRobbedItemRecent[robbedPlayerId] then
                 PlayerRobbedItemRecent[robbedPlayerId] = {}
             end
