@@ -5,19 +5,19 @@ A custom script for roleplay servers that allows the specification of which item
 ## qb-menu 
 ![image](https://media.discordapp.net/attachments/1213222011170717706/1252421091125891163/Screenshot_430.png?ex=66722788&is=6670d608&hm=9b137ce95220e5717428bbcb63d1313824da4bf0aeff14e658e81b404845aba8&=&format=webp&quality=lossless&width=1193&height=671)
 
-![image](https://imgur.com/ZKSINyd)
+![image](https://imgur.com/ZKSINyd.png)
 
-![image](https://imgur.com/ZbHu9UO)
+![image](https://imgur.com/ZbHu9UO.png)
 
-![image](https://imgur.com/jRw79mF)
+![image](https://imgur.com/jRw79mF.png)
 
 ## Ox_lib Context Menu
 
-![image](https://imgur.com/Vo5CmxT)
+![image](https://imgur.com/Vo5CmxT.png)
 
-![image](https://imgur.com/TPJoqKH)
+![image](https://imgur.com/TPJoqKH.png)
 
-![image](https://imgur.com/Q1mSLAs)
+![image](https://imgur.com/Q1mSLAs.png)
 
 ## Logs
 
