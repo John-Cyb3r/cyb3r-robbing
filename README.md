@@ -30,7 +30,7 @@ A custom script for roleplay servers that allows the specification of which item
 - add the following code to your server.cfg file
 
 ```
-ensure Cyb3r-robbing
+ensure cyb3r-robbing
 ```
 ### Installation
 
