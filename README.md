@@ -69,7 +69,7 @@ robbingkit = { name = 'robbingkit', label = 'Robbery Kit', weight = 1000, type =
 ### Update v1.2.0
 - Added support for robbing players who are alive
 - Checks If the player being robbed  is handcuffed (Configurable)
-- Checks If player had a specific gun (Configurable)
+- Checks If player has a specific gun while he start the robbery (Configurable)
 - Added customizable command for robbing players (doesn't require the item)
 - Works With the New Version of qbcore (Including new qb-inventory)
 - Some Additional Bug Fixes
