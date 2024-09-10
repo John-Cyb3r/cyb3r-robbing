@@ -2,11 +2,30 @@ Config = {}
 
 Config.EnableItemRob = true -- Enable Item Robbing
 
+Config.EnableAlivePlayerRob = true -- Allows players to rob other players even if they are alive
+Config.CheckPlayerHandCuffed = false -- Uses QBCore's Meta Data to check if the player being robbed is handcuffed
+Config.CheckIsWeaponOnHand = true -- Checks if the player robbing has a weapon in hand
+Config.UseAnyWeaponOnHand = false -- Player Can Use Any Weapon to rob
+Config.WeaponsNotAllowed = { -- Enabled when Config.UseAnyWeaponOnHand set to true and excludes some weapons
+    GetHashKey("WEAPON_KNIFE"),
+    GetHashKey("WEAPON_BAT"),
+    GetHashKey("WEAPON_HAMMER"),
+    GetHashKey("WEAPON_CROWBAR"),
+    GetHashKey("WEAPON_UNARMED"),
+}
+Config.WeaponsAllowed = { -- List of names of weapons that the person can use to rob players | Disabled when Config.UseAnyWeaponOnHand = true
+    GetHashKey("WEAPON_PISTOL"),
+}
+
+Config.EnableRobbingCommand = true -- Allows players to rob a player using /rob and doesn't require the item
+Config.RobbingCommand = "rob" -- Robbing Command Used By the player
+Config.RobbingCommandPerms = "user" -- user = everyone | admin = server players with qbcore adminstators perms | god = server players qbcore with god perms
+
 Config.EnableCashRob = true -- Enable Cash Robbing
 Config.CashRobMaxAmount = 10000 -- Maximum Amount Of Cash A Player Can rob and will disable the option to rob cash again
 Config.CashRobCooldown = 10 -- In minutes, the cooldown which the robbing player must wait to rob cash again after they have already robbed him out the max amount
 
-Config.EnableOxLibMenu = false
+Config.EnableOxLibMenu = true
 Config.InventoryImages = "qb-inventory/html/images"
 
 Config.RobbingKit = "robbingkit"

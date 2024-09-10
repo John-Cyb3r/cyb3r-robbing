@@ -69,7 +69,8 @@ local function GetClosestPlayer()
 
     for _, playerId in ipairs(players) do
         local targetPed = GetPlayerPed(playerId)
-        if targetPed ~= playerPed and IsPedAPlayer(targetPed) then  -- Ensure the target is not the local player and is a valid player ped
+		if targetPed ~= playerPed and IsPedAPlayer(targetPed) then -- Ensure the target is not the local player and is a valid player ped
+        -- if IsPedAPlayer(targetPed) then  -- remove comment if you want test in singleplayer
             local targetCoords = GetEntityCoords(targetPed)
             local distance = #(playerCoords - targetCoords)
 
@@ -83,14 +84,43 @@ local function GetClosestPlayer()
     return closestPlayer, closestDistance
 end
 
+local function isWeaponAllowed(weaponHash)
+	if Config.UseAnyWeaponOnHand then
+    	for _, hash in pairs(Config.WeaponsNotAllowed) do
+    	    if weaponHash == hash then
+    	        return false -- Weapon found
+    	    end
+    	end
+    	return true -- Weapon not found
+	else
+    	for _, hash in pairs(Config.WeaponsAllowed) do
+    	    if weaponHash == hash then
+    	        return true -- Weapon found
+    	    end
+    	end
+    	return false -- Weapon not found
+	end
+end
+
 RegisterNetEvent('Cyb3r-robitem:openmenu', function()
 
 	local ClosestPlayer, distance = GetClosestPlayer()
 	--print(GetPlayerServerId(ClosestPlayer), distance)
+	if Config.CheckIsWeaponOnHand then
+		local weaponHash = GetSelectedPedWeapon(PlayerPedId())
+		if not isWeaponAllowed(weaponHash) then
+			QBCore.Functions.Notify('You don\'t have the appropriate weapon to rob the player' , 'error', 3000)
+			return
+		end
+	end
 	if ClosestPlayer and distance < 2 then
 		QBCore.Functions.TriggerCallback('Cyb3r-robitem:isplayerdead', function(bool)
-			if bool and bool ~= "brokenitem" then
-				exports["rpemotes"]:EmoteCommandStart('medic')
+			if bool and bool ~= "brokenitem" and bool ~= "notcuffed" then
+				if Config.EnableAlivePlayerRob then
+					exports["rpemotes"]:EmoteCommandStart('gunpoint')
+				else
+					exports["rpemotes"]:EmoteCommandStart('medic')
+				end
 				QBCore.Functions.Notify('You started searching the players body', 'success', 5000)
 				QBCore.Functions.Notify(ClosestPlayer, 'You are being searched by another player', 'error', 5000)
 				QBCore.Functions.Progressbar("random_task", "Searching Player\'s Body", tonumber(Config.SearchProgressTime), false, true, {
@@ -98,8 +128,10 @@ RegisterNetEvent('Cyb3r-robitem:openmenu', function()
 					disableCarMovement = true,
 					disableMouse = false,
 					disableCombat = true,
-				}, {}, {}, {}, function()
+				}, {}, {}, {}, function()				
+
 					exports["rpemotes"]:EmoteCancel()
+
 
 					TriggerEvent('Cyb3r-robitem:mainMenu', {tPlayerId = GetPlayerServerId(ClosestPlayer)})
 
@@ -107,6 +139,8 @@ RegisterNetEvent('Cyb3r-robitem:openmenu', function()
 					exports["rpemotes"]:EmoteCancel()
 					QBCore.Functions.Notify('You stopped searching the Player', 'error')
 				end)
+			elseif bool == "notcuffed" then
+				QBCore.Functions.Notify('The Player You Are Trying To Rob Is Not HandCuffed' , 'error', 3000)
 			elseif bool == "brokenitem" then
 				QBCore.Functions.Notify('The RobbingKit is broken, Please get a new one' , 'error', 3000)
 			else

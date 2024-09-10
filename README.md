@@ -43,14 +43,6 @@ robbingkit = { name = 'robbingkit', label = 'Robbery Kit', weight = 1000, type =
 ```
 
 # Features:
-### Update v1.1.0
-- Added support for ox_lib context menu, incase you don't want to use qb menu
-- Added Cash Rob Max Amount for players
-- Added Cash Rob Cooldown, will disable option to rob cash after Max Amount is robbed (Configurable)
-- Changed from qb-logs to inbuilt log system, just configure your webhookurl
-- Added Max Stealable Items Limit, to limit players from robbing certain items 
-- Added Cooldown For Max Stealable Items Limit, will disable option to rob that specific item after Max Amount is robbed (Configurable)
-- Some Additional Bug Fixes
 
 ### Robbing Config
 - Configurable Items: Easily edit the items that can be robbed in the config.lua file.
@@ -64,6 +56,23 @@ robbingkit = { name = 'robbingkit', label = 'Robbery Kit', weight = 1000, type =
 ### Logging
 - Detailed Logging: Logs the player's character name, server ID, and FiveM name during a robbery.
 - Comprehensive Item Details: Provides advanced details of the items being robbed, including weapon serial numbers, item amounts, and more.
+
+### Update v1.1.0
+- Added support for ox_lib context menu, incase you don't want to use qb menu
+- Added Cash Rob Max Amount for players
+- Added Cash Rob Cooldown, will disable option to rob cash after Max Amount is robbed (Configurable)
+- Changed from qb-logs to inbuilt log system, just configure your webhookurl
+- Added Max Stealable Items Limit, to limit players from robbing certain items 
+- Added Cooldown For Max Stealable Items Limit, will disable option to rob that specific item after Max Amount is robbed (Configurable)
+- Some Additional Bug Fixes
+
+### Update v1.2.0
+- Added support for robbing players who are alive
+- Checks If the player being robbed  is handcuffed (Configurable)
+- Checks If player had a specific gun (Configurable)
+- Added customizable command for robbing players (doesn't require the item)
+- Works With the New Version of qbcore (Including new qb-inventory)
+- Some Additional Bug Fixes
 
 # Credits
 

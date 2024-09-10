@@ -35,27 +35,53 @@ QBCore.Functions.CreateUseableItem(Config.RobbingKit, function(source, item)
     TriggerClientEvent("Cyb3r-robitem:openmenu", src)
 end)
 
+if Config.EnableRobbingCommand then
+    QBCore.Commands.Add(Config.RobbingCommand, "Will start robbing the closest player near you", {}, false, function(source)
+        TriggerClientEvent("Cyb3r-robitem:openmenu", source)
+    end, Config.RobbingCommandPerms)
+end
+
 QBCore.Functions.CreateCallback('Cyb3r-robitem:isplayerdead', function(source, cb, PlayerId)
     local Player = QBCore.Functions.GetPlayer(tonumber(PlayerId)) 
     local StealingPlayer = QBCore.Functions.GetPlayer(source)
     if Player and StealingPlayer then
         local bool = Player.PlayerData.metadata['isdead']
+        if Config.EnableAlivePlayerRob then
+            if Config.CheckPlayerHandCuffed then 
+                if Player.PlayerData.metadata['ishandcuffed'] then
+                    bool = true
+                else
+                    bool = "notcuffed"
+                end
+            else
+                bool = true
+            end
+        end
         if bool then
-            local Item = StealingPlayer.Functions.GetItemByName(Config.RobbingKit)
-            local ItemSlot = StealingPlayer.PlayerData.items[Item.slot]
-
-            if ItemSlot.info.quality > 0 then
-                ItemSlot.info.quality = ItemSlot.info.quality - (100 / tonumber(Config.RobbingKitUses)) 
-                StealingPlayer.Functions.SetInventory(StealingPlayer.PlayerData.items, true)
-                if Config.Logs then
+            if Config.EnableRobbingCommand then 
+                if Config.Logs and bool then
                     local StealingPlayerName =  StealingPlayer.PlayerData.charinfo.firstname .. " " .. StealingPlayer.PlayerData.charinfo.lastname
                     local RobbedPlayerName =  Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname
                     sendToDiscord("[Cyber-Robbing]",'**ID:** ``'..source..'`` **|** ``'..StealingPlayerName..' ('..GetPlayerName(source)..')`` **Is Robbing The Player ID:** ``'..PlayerId..'`` **|** ``'..RobbedPlayerName..' ('..GetPlayerName(PlayerId)..')``')
                 end
                 cb(bool)
             else
-                bool = "brokenitem"
-                cb(bool)
+                local Item = StealingPlayer.Functions.GetItemByName(Config.RobbingKit)
+                local ItemSlot = StealingPlayer.PlayerData.items[Item.slot]
+
+                if ItemSlot.info.quality > 0 then
+                    ItemSlot.info.quality = ItemSlot.info.quality - (100 / tonumber(Config.RobbingKitUses)) 
+                    StealingPlayer.Functions.SetInventory(StealingPlayer.PlayerData.items, true)
+                    if Config.Logs and bool then
+                        local StealingPlayerName =  StealingPlayer.PlayerData.charinfo.firstname .. " " .. StealingPlayer.PlayerData.charinfo.lastname
+                        local RobbedPlayerName =  Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname
+                        sendToDiscord("[Cyber-Robbing]",'**ID:** ``'..source..'`` **|** ``'..StealingPlayerName..' ('..GetPlayerName(source)..')`` **Is Robbing The Player ID:** ``'..PlayerId..'`` **|** ``'..RobbedPlayerName..' ('..GetPlayerName(PlayerId)..')``')
+                    end
+                    cb(bool)
+                else
+                    bool = "brokenitem"
+                    cb(bool)
+                end
             end
         else
             cb(bool)
@@ -64,6 +90,8 @@ QBCore.Functions.CreateCallback('Cyb3r-robitem:isplayerdead', function(source, c
         cb(nil)
     end
 end)
+
+
 
 QBCore.Functions.CreateCallback('Cyb3r-robitem:GetPlayerInventory', function(source, cb, stealingPlayerId)
 
@@ -78,13 +106,12 @@ QBCore.Functions.CreateCallback('Cyb3r-robitem:GetPlayerInventory', function(sou
 end)
 
 QBCore.Functions.CreateCallback('Cyb3r-robitem:GetPlayerCash', function(source, cb, targetPlayerId)
-    --local sourcePlayer = QBCore.Functions.GetPlayer(source)
     local targetPlayer = QBCore.Functions.GetPlayer(targetPlayerId)
     if targetPlayer then
         local cashAmount = targetPlayer.PlayerData.money['cash']
         cb(cashAmount)
     else
-        cb(nil)  -- You can send any signal to indicate failure, like nil
+        cb(nil) 
     end
 end)
 
@@ -93,10 +120,7 @@ RegisterServerEvent('Cyb3r-robitem:RobItem', function(data)
     local robbedPlayer = QBCore.Functions.GetPlayer(robbedPlayerId)
     local stealingPlayer = QBCore.Functions.GetPlayer(stealingPlayerId)
 
-    -- local disable = false
-    -- if hasBeenRobbedItemRecently(robbedPlayerId, itemName, itemSlot) then
-    --     disable = true
-    -- end
+
     if Config.StealableItemsMaxAmount[itemName] then
 
         if itemAmount >= Config.StealableItemsMaxAmount[itemName] then 
