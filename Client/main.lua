@@ -60,30 +60,6 @@ local function isStealable(item)
 	end
 end
 
-local function GetClosestPlayer()
-    local players = QBCore.Functions.GetPlayers()
-    local closestPlayer = -1
-    local closestDistance = -1
-    local playerPed = PlayerPedId()
-    local playerCoords = GetEntityCoords(playerPed)
-
-    for _, playerId in ipairs(players) do
-        local targetPed = GetPlayerPed(playerId)
-		if targetPed ~= playerPed and IsPedAPlayer(targetPed) then -- Ensure the target is not the local player and is a valid player ped
-        -- if IsPedAPlayer(targetPed) then  -- remove comment if you want test in singleplayer
-            local targetCoords = GetEntityCoords(targetPed)
-            local distance = #(playerCoords - targetCoords)
-
-            if closestDistance == -1 or distance < closestDistance then
-                closestPlayer = playerId
-                closestDistance = distance
-            end
-        end
-    end
-
-    return closestPlayer, closestDistance
-end
-
 local function isWeaponAllowed(weaponHash)
 	if Config.UseAnyWeaponOnHand then
     	for _, hash in pairs(Config.WeaponsNotAllowed) do
@@ -104,16 +80,16 @@ end
 
 RegisterNetEvent('Cyb3r-robitem:openmenu', function()
 
-	local ClosestPlayer, distance = GetClosestPlayer()
-	--print(GetPlayerServerId(ClosestPlayer), distance)
+	local closestId, closestPed, closestCoords = lib.getClosestPlayer(GetEntityCoords(cache.ped), 2.0, false)
+
 	if Config.CheckIsWeaponOnHand then
-		local weaponHash = GetSelectedPedWeapon(PlayerPedId())
+		local weaponHash = cache.weapon -- New Ox-lib replacement
 		if not isWeaponAllowed(weaponHash) then
 			QBCore.Functions.Notify('You don\'t have the appropriate weapon to rob the player' , 'error', 3000)
 			return
 		end
 	end
-	if ClosestPlayer and distance < 2 then
+	if closestId then
 		QBCore.Functions.TriggerCallback('Cyb3r-robitem:isplayerdead', function(bool)
 			if bool and bool ~= "brokenitem" and bool ~= "notcuffed" then
 				if Config.EnableAlivePlayerRob then
@@ -132,8 +108,7 @@ RegisterNetEvent('Cyb3r-robitem:openmenu', function()
 
 					exports["rpemotes"]:EmoteCancel()
 
-
-					TriggerEvent('Cyb3r-robitem:mainMenu', {tPlayerId = GetPlayerServerId(ClosestPlayer)})
+					TriggerEvent('Cyb3r-robitem:mainMenu', {tPlayerId = closestId})
 
 				end, function()
 					exports["rpemotes"]:EmoteCancel()
@@ -146,7 +121,7 @@ RegisterNetEvent('Cyb3r-robitem:openmenu', function()
 			else
 				QBCore.Functions.Notify('Player is not fully dead yet', 'error')
 			end
-		end, GetPlayerServerId(ClosestPlayer))
+		end, closestId)
 	else
 		QBCore.Functions.Notify('You are not close enough to the player', 'error')
 	end
