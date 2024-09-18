@@ -2,9 +2,9 @@ Config = {}
 
 Config.EnableItemRob = true -- Enable Item Robbing
 
-Config.EnableAlivePlayerRob = true -- Allows players to rob other players even if they are alive
+Config.EnableAlivePlayerRob = false -- Allows players to rob other players even if they are alive
 Config.CheckPlayerHandCuffed = false -- Uses QBCore's Meta Data to check if the player being robbed is handcuffed
-Config.CheckIsWeaponOnHand = true -- Checks if the player robbing has a weapon in hand
+Config.CheckIsWeaponOnHand = false -- Checks if the player robbing has a weapon in hand
 Config.UseAnyWeaponOnHand = false -- Player Can Use Any Weapon to rob
 Config.WeaponsNotAllowed = { -- Enabled when Config.UseAnyWeaponOnHand set to true and excludes some weapons
     GetHashKey("WEAPON_KNIFE"),

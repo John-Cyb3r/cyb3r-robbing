@@ -81,6 +81,7 @@ end
 RegisterNetEvent('Cyb3r-robitem:openmenu', function()
 
 	local closestId, closestPed, closestCoords = lib.getClosestPlayer(GetEntityCoords(cache.ped), 2.0, false)
+	closestId = GetPlayerServerId(closestId)
 
 	if Config.CheckIsWeaponOnHand then
 		local weaponHash = cache.weapon -- New Ox-lib replacement
@@ -89,7 +90,7 @@ RegisterNetEvent('Cyb3r-robitem:openmenu', function()
 			return
 		end
 	end
-	if closestId then
+	if closestId ~= 0 then
 		QBCore.Functions.TriggerCallback('Cyb3r-robitem:isplayerdead', function(bool)
 			if bool and bool ~= "brokenitem" and bool ~= "notcuffed" then
 				if Config.EnableAlivePlayerRob then
