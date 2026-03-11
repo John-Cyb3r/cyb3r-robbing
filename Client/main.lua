@@ -8,10 +8,8 @@ RegisterNetEvent('Cyb3r-robitem:UpdateRobCash', function(data)
 end)
 
 local function hasBeenRobbedRecently(playerId)
-    local MinutesInMillis = Config.CashRobCooldown * 60 * 1000
-    local currentTime = GetGameTimer()
     if PlayerRobbedCashRecent[playerId] then
-        if (currentTime - PlayerRobbedCashRecent[playerId]) < MinutesInMillis then
+        if os.time() < PlayerRobbedCashRecent[playerId] then
             return true
 		else
 			PlayerRobbedCashRecent[playerId] = nil
@@ -26,11 +24,8 @@ RegisterNetEvent('Cyb3r-robitem:UpdateRobItems', function(data)
 end)
 
 local function hasBeenRobbedItemRecently(playerId, itemname, slot)
-    local MinutesInMillis = Config.StealableItemsMaxAmountCooldown * 60 * 1000
-    local currentTime = GetGameTimer()
     if PlayerRobbedItemRecent[playerId] and PlayerRobbedItemRecent[playerId][itemname] and PlayerRobbedItemRecent[playerId][itemname][slot] then
-        if (currentTime - PlayerRobbedItemRecent[playerId][itemname][slot].lastRobbedTime) < MinutesInMillis then
-
+        if os.time() < PlayerRobbedItemRecent[playerId][itemname][slot].expirationTime then
             return true
         end
     end
@@ -129,12 +124,10 @@ RegisterNetEvent('Cyb3r-robitem:openmenu', function()
 end)
 
 RegisterNetEvent('Cyb3r-robitem:clientrobitem', function(data)
-	data.time = GetGameTimer() 
 	TriggerServerEvent('Cyb3r-robitem:RobItem', data)
 end)
 
 RegisterNetEvent('Cyb3r-robitem:clientrobcash', function(data)
-	data.time = GetGameTimer() 
 	TriggerServerEvent('Cyb3r-robitem:RobCash', data)
 end)
 
